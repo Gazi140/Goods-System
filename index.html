@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة البضائع</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="goods">
+        <div class="head">
+            <h2>الملاك الأبيض</h2>
+            <p>نظام إدارة البضائع</p>
+        </div>
+
+        <div class="inputs">
+            <input type="text" id="title" placeholder="الأسم">
+            <select id="dovis" onchange="selected(this.value)">
+                <option value="$">$</option>
+                <option value="TL">TL</option>
+            </select>
+            <div class="price">
+                <input type="number" id="number" onkeyup="getTotal()" placeholder="جديد">
+                <input type="number" id="price" onkeyup="getTotal()" placeholder="قديم">
+                <input type="number" id="paid" onkeyup="getTotal()" placeholder="دفعة ">
+
+                <span id="total"></span>
+            </div>
+            <input type="date" id="date">
+            <!-- <input type="number" id="count" placeholder="تكرار "> -->
+            <button id="submit">انشاء</button>
+            <input type="text" id="search" onkeyup="searchData(this.value)" placeholder="بحث">
+            <button onclick="searchBtn()">ابحث</button>
+
+        </div>
+        <div id="deleteAll"></div>
+        <div class="output">
+            <table>
+                <tr>
+                    <th>الأسم</th>
+                    <th>جديد</th>
+                    <th>قديم</th>
+                    <th>دفعة</th>
+                    <th>المجموع</th>
+                    <th>التاريخ</th>
+                    <th>تعديل</th>
+                    <th>حذف</th>
+                </tr>
+                <tbody id="tbody">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="main.js "></script>
+</body>
+
+</html>
