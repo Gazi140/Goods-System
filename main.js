@@ -11,7 +11,7 @@ let tmp;
 let mod = "creat"
     //getTotal
 function getTotal() {
-    if (price.value !== "") {
+    if (number.value !== "") {
         let result = (+price.value + +number.value) - +paid.value;
         total.innerHTML = result + dovis.value;
         total.style.backgroundColor = "#040";
@@ -28,6 +28,7 @@ let dataPro;
 
 if (localStorage.proudects) {
     dataPro = JSON.parse(localStorage.proudects);
+    dovis.value = localStorage.dovisValue
 } else {
     dataPro = [];
 }
@@ -41,9 +42,11 @@ submit.onclick = function() {
             paid: paid.value,
             date: date.value,
             total: total.innerHTML,
+            dovis: dovis.value,
             // count: count.value,
+
         };
-        if (title.value !== "" && price.value !== "") {
+        if (title.value !== "" && number.value !== "") {
             if (mod === "creat") {
                 dataPro.push(newPro);
 
@@ -76,6 +79,7 @@ submit.onclick = function() {
         //save proudects localStorge
 
         localStorage.setItem("proudects", JSON.stringify(dataPro));
+        localStorage.setItem("dovisValue", dovis.value);
 
         showData();
 
@@ -105,9 +109,9 @@ function showData() {
         table += `
         <tr>
             <td>${dataPro[i].title}</td>
-            <td>${dataPro[i].number + dovis.value}</td>
-            <td>${dataPro[i].price +dovis.value}</td>
-            <td>${dataPro[i].paid +dovis.value}</td>
+            <td>${dataPro[i].number +dataPro[i].dovis}</td>
+            <td>${dataPro[i].price +dataPro[i].dovis}</td>
+            <td>${dataPro[i].paid +dataPro[i].dovis}</td>
             <td>${dataPro[i].total}</td>
             <td>${dataPro[i].date}</td>
             <td><button id="updet" onclick="updateData(${i})">تعديل</button></td>
@@ -185,9 +189,9 @@ function searchData(value) {
             table += `
         <tr>
             <td>${dataPro[i].title}</td>
-            <td>${dataPro[i].number + dovis.value}</td>
-            <td>${dataPro[i].price +dovis.value}</td>
-            <td>${dataPro[i].paid +dovis.value}</td>
+            <td>${dataPro[i].number +dataPro[i].dovis}</td>
+            <td>${dataPro[i].price +dataPro[i].dovis}</td>
+            <td>${dataPro[i].paid +dataPro[i].dovis}</td>
             <td>${dataPro[i].total}</td>
             <td>${dataPro[i].date}</td>
             <td><button id="updet" onclick="updateData(${i})">تعديل</button></td>
